@@ -20,23 +20,24 @@ public class Rede {
 	}
 	
 	public void iniciarRede(){
+		System.out.println("INICIANDO REDE");
 		qtdExemplos = exemplos.length;
 		qtdAtributos = exemplos[0].length;
 		n = new Neuronio(qtdAtributos);
 	}
 	
 	public void treinarRede(){
+		System.out.println("TREINANDO REDE");
 		double erroTotal = 0;
-		
-//		n.iniciaPeso();
 		
 		do{		
 			erroTotal = 0;
 			for (int i = 0; i < exemplos.length ; i++) {		
-				for (int j = 0; j < exemplos[i].length; j++) {
-					n.setEntrada(j, exemplos[i][j]);
-					System.out.println("ENTRADAS= " + exemplos[i][j]);
-				}				
+//				for (int j = 0; j < exemplos[i].length; j++) {
+//					n.setEntrada(j, exemplos[i][j]);
+//					System.out.println("ENTRADAS= " + exemplos[i][j]);
+//				}				
+				n.setEntrada(exemplos[i]);
 				
 				//calculaSaida();				
 				n.calculaSaida();
@@ -53,10 +54,26 @@ public class Rede {
 	}
 	
 	public void executarRede(){
-		System.out.println("Virus");
-		System.out.println("Bacteria");
-		System.out.println("Dor de cabeça");
-		System.out.println("Corisa");
+		System.out.println("EXECUTAR REDE");
+		
+		int executar[] = new int[this.qtdAtributos];
+		
+		
+		System.out.println("Digite " + this.qtdAtributos+ " atributos: ");
+		
+		for (int i = 0; i < qtdAtributos; i++) {
+			executar[i] = entrar.nextInt();
+		}
+		
+		n.setEntrada(executar);
+		n.calculaSaida();
+		if(n.getSaida() > 0){
+			System.out.println("Resfriado!");
+		}else{
+			System.out.println("Gripe!");
+		}
+		System.out.println("A saída é: "+n.getSaida());
+		
 	}	
 	
 }

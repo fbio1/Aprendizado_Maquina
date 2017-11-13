@@ -61,11 +61,15 @@ public class Neuronio {
 		}
 	}
 
-	public void setEntrada(int entrada, int v) {
-		this.entrada[entrada] = v;
-	}
-
+//	public void setEntrada(int entrada , int v) {
+//		this.entrada[entrada] = v;
+//	}
+	
+	public void setEntrada(int[] entrada) {
+		this.entrada = entrada;
+	}			
+	
 	public int getSaida() {
 		return saida;
-	}			
+	}	
 }
